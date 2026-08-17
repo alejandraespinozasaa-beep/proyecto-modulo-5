@@ -969,3 +969,10 @@
         flex-basis: 27px;
     }
 }
+
+/* En celular priorizamos la lista de tareas */
+@media (max-width: 760px) {
+    .quick-stats {
+        display: none;
+    }
+}
