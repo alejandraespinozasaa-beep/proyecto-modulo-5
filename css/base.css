@@ -1,0 +1,299 @@
+/* ==========================================
+   MYFLOW - BASE.CSS
+   Variables, reset y estilos globales
+   ========================================== */
+
+:root {
+
+    /* COLORES PRINCIPALES */
+
+    --primary: #6657e8;
+    --primary-dark: #5143d3;
+    --primary-soft: #f1efff;
+
+   /* VERDE MYFLOW */
+
+    --aqua: #12D6B0;
+    --aqua-dark: #08B99A;
+    --aqua-soft: #E8FBF7;
+
+    /* ESTADOS */
+
+    --success: #36ad83;
+    --success-soft: #e9f8f2;
+
+    --warning: #eea12b;
+    --warning-soft: #fff4df;
+
+    --danger: #e25755;
+    --danger-soft: #fff0ef;
+
+    --info: #4d84ee;
+    --info-soft: #edf4ff;
+
+    /* TEXTO */
+
+    --text: #192238;
+    --text-secondary: #69738a;
+    --text-soft: #98a0b2;
+
+    /* FONDOS */
+
+    --background: #f7f8fc;
+    --surface: #ffffff;
+
+    /* BORDES */
+
+    --border: #e3e7ef;
+
+    /* SOMBRAS */
+
+    --shadow-xs:
+        0 4px 12px rgba(25, 34, 56, 0.04);
+
+    --shadow-sm:
+        0 8px 24px rgba(25, 34, 56, 0.06);
+
+    --shadow-md:
+        0 18px 45px rgba(25, 34, 56, 0.11);
+
+    /* RADIOS */
+
+    --radius-sm: 12px;
+    --radius-md: 18px;
+    --radius-lg: 24px;
+
+    /* TRANSICIÓN */
+
+    --transition: 0.2s ease;
+
+
+    /* COMPATIBILIDAD */
+
+    --color-primary: var(--primary);
+    --color-secondary: var(--aqua);
+
+    --color-primary-soft: var(--primary-soft);
+
+    --color-text: var(--text);
+    --color-text-secondary: var(--text-secondary);
+    --color-text-soft: var(--text-soft);
+
+    --color-background: var(--background);
+    --color-surface: var(--surface);
+
+    --color-border: var(--border);
+
+    --color-success: var(--success);
+    --color-success-soft: var(--success-soft);
+
+    --color-warning: var(--warning);
+    --color-warning-soft: var(--warning-soft);
+
+    --color-danger: var(--danger);
+    --color-danger-soft: var(--danger-soft);
+}
+
+
+/* ==========================================
+   RESET
+   ========================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    min-width: 320px;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    color: var(--text);
+
+    background: var(--background);
+
+    font-family:
+        "Poppins",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 16px;
+    line-height: 1.5;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* ==========================================
+   TIPOGRAFÍA
+   ========================================== */
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin-top: 0;
+}
+
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text);
+
+    font-weight: 700;
+}
+
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+button {
+    color: inherit;
+}
+
+
+a {
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+img {
+    display: block;
+
+    max-width: 100%;
+}
+
+
+/* ==========================================
+   CONTENEDOR
+   ========================================== */
+
+.container {
+    width: min(1320px, calc(100% - 120px));
+
+    margin-inline: auto;
+}
+
+
+/* ==========================================
+   EYEBROW
+   ========================================== */
+
+.eyebrow {
+    margin: 0 0 6px;
+
+    color: var(--aqua-dark);
+
+    font-size: 0.7rem;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+
+/* ==========================================
+   ACCESIBILIDAD
+   ========================================== */
+
+.sr-only {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ==========================================
+   FOCUS
+   ========================================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(102, 87, 232, 0.18);
+
+    outline-offset: 3px;
+}
+
+
+/* ==========================================
+   SELECCIÓN
+   ========================================== */
+
+::selection {
+    color: #ffffff;
+
+    background: var(--primary);
+}
+
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 1100px) {
+
+    .container {
+        width: calc(100% - 64px);
+    }
+}
+
+@media (max-width: 700px) {
+
+    .container {
+        width: calc(100% - 28px);
+    }
+
+    body {
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 390px) {
+
+    .container {
+        width: calc(100% - 20px);
+    }
+}

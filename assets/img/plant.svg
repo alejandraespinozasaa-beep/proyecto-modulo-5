@@ -1,0 +1,43 @@
+<svg width="420" height="260" viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+    <ellipse cx="235" cy="225" rx="145" ry="18" fill="#6C5CE7" fill-opacity="0.06"></ellipse>
+
+    <circle cx="230" cy="120" r="115" fill="#12D6B0" fill-opacity="0.045"></circle>
+
+    <circle cx="290" cy="100" r="75" fill="#6C5CE7" fill-opacity="0.035"></circle>
+
+    <!-- Tallos -->
+
+    <path d="M222 184C216 146 217 103 205 67" stroke="#10B89A" stroke-width="5" stroke-linecap="round"></path>
+
+    <path d="M224 174C248 145 263 113 271 78" stroke="#10B89A" stroke-width="5" stroke-linecap="round"></path>
+
+    <path d="M219 155C190 137 168 114 155 91" stroke="#10B89A" stroke-width="5" stroke-linecap="round"></path>
+
+    <!-- Hojas -->
+
+    <ellipse cx="194" cy="78" rx="17" ry="32" transform="rotate(-25 194 78)" fill="#12D6B0"></ellipse>
+
+    <ellipse cx="159" cy="105" rx="18" ry="34" transform="rotate(-52 159 105)" fill="#30DDBC"></ellipse>
+
+    <ellipse cx="258" cy="102" rx="18" ry="35" transform="rotate(36 258 102)" fill="#12D6B0"></ellipse>
+
+    <ellipse cx="280" cy="72" rx="17" ry="32" transform="rotate(22 280 72)" fill="#48E1C1"></ellipse>
+
+    <ellipse cx="221" cy="55" rx="17" ry="34" transform="rotate(-5 221 55)" fill="#32D9B8"></ellipse>
+
+    <!-- Maceta -->
+
+    <path d="M181 177H261L253 225C252 235 244 242 234 242H208C198 242 190 235 189 225L181 177Z" fill="white"></path>
+
+    <path d="M181 177H261" stroke="#E4E7EF" stroke-width="4" stroke-linecap="round"></path>
+
+    <path d="M190 188H252" stroke="#EFF1F6" stroke-width="3" stroke-linecap="round"></path>
+
+    <!-- Estrellitas -->
+
+    <path d="M328 54L332 64L342 68L332 72L328 82L324 72L314 68L324 64L328 54Z" fill="#6C5CE7" fill-opacity="0.45"></path>
+
+    <circle cx="116" cy="71" r="5" fill="#12D6B0" fill-opacity="0.45"></circle>
+
+</svg>
