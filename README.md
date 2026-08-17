@@ -38,7 +38,7 @@ La interfaz es responsive y está pensada para que las tareas sean siempre las p
 
 La versión publicada en GitHub Pages estará disponible aquí:
 
-**[Agregar aquí el enlace de GitHub Pages]**
+(https://github.com/alejandraespinozasaa-beep/proyecto-modulo-5.git)
 
 ## 📚 Lo que aprendí
 
