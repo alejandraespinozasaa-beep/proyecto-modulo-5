@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="MyFlow, aplicación web para crear, organizar y gestionar tareas."
+    >
+
+    <title>MyFlow | Organiza tu día</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body id="inicio">
+
+    <header class="header">
+
+        <div class="container header__content">
+
+            <a
+                href="#"
+                class="brand"
+                aria-label="MyFlow - Inicio"
+            >
+                <img
+                    src="./assets/img/myflow-logo.png"
+                    alt="MyFlow"
+                    class="brand__image"
+                >
+            </a>
+
+            <div class="header__actions">
+
+                <span
+                    id="estadoApi"
+                    class="api-status"
+                    aria-live="polite"
+                >
+                    Conectando...
+                </span>
+
+                <button
+                    type="button"
+                    id="btnInspirame"
+                    class="btn btn--ghost"
+                >
+                    <span aria-hidden="true">✨</span>
+                    Inspírame
+                </button>
+
+                <button
+                    type="button"
+                    id="btnNuevaTarea"
+                    class="btn btn--primary btn--icon header-quick-add"
+                    aria-label="Nueva tarea"
+                    data-tooltip="Nueva tarea"
+                >
+                    <span aria-hidden="true">✎</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="main">
+
+        <div class="container">
+
+
+            <!-- HERO -->
+
+            <section class="hero">
+
+                <div class="hero__mini-decoration" aria-hidden="true">
+                    <img src="./assets/img/left-plant.svg" alt="">
+                </div>
+
+                <div class="hero__content">
+                    <div class="hero__row">
+                        <h1>Hola, ¿qué quieres lograr hoy?</h1>
+
+                        <button type="button" id="btnHeroNuevaTarea" class="hero-action">
+                            <span class="hero-action__icon" aria-hidden="true">✎</span>
+                            <span>Crear tarea</span>
+                        </button>
+                    </div>
+
+                    <p class="hero__description">
+                        Convierte tus objetivos en tareas concretas.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- WORKSPACE -->
+
+            <section class="workspace">
+
+
+                <!-- TAREAS -->
+
+                <div class="tasks-area">
+
+                    <div class="tasks-header">
+
+                        <div class="tasks-title">
+
+                            <div
+                                class="tasks-title__icon"
+                                aria-hidden="true"
+                            ></div>
+
+                            <div>
+
+                                <h2>
+                                    Mis tareas
+                                </h2>
+
+                                <p>
+                                    Prioriza lo importante y avanza a tu ritmo.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="search">
+
+                            <label
+                                for="buscarTarea"
+                                class="sr-only"
+                            >
+                                Buscar tarea
+                            </label>
+
+                            <input
+                                type="search"
+                                id="buscarTarea"
+                                class="search__input"
+                                placeholder="Buscar tareas..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RESUMEN -->
+
+                    <div class="quick-stats">
+
+                        <article class="quick-stat">
+
+                            <div
+                                class="quick-stat__icon quick-stat__icon--total"
+                                aria-hidden="true"
+                            >
+                                ◈
+                            </div>
+
+                            <div>
+                                <strong id="resumenTotal">0</strong>
+                                <span>Total</span>
+                            </div>
+
+                        </article>
+
+
+                        <article class="quick-stat">
+
+                            <div
+                                class="quick-stat__icon quick-stat__icon--todo"
+                                aria-hidden="true"
+                            >
+                                ○
+                            </div>
+
+                            <div>
+                                <strong id="resumenPendientes">0</strong>
+                                <span>Por iniciar</span>
+                            </div>
+
+                        </article>
+
+
+                        <article class="quick-stat">
+
+                            <div
+                                class="quick-stat__icon quick-stat__icon--progress"
+                                aria-hidden="true"
+                            >
+                                ▶
+                            </div>
+
+                            <div>
+                                <strong id="resumenEnProgreso">0</strong>
+                                <span>En curso</span>
+                            </div>
+
+                        </article>
+
+
+                        <article class="quick-stat">
+
+                            <div
+                                class="quick-stat__icon quick-stat__icon--done"
+                                aria-hidden="true"
+                            >
+                                ✓
+                            </div>
+
+                            <div>
+                                <strong id="resumenCompletadas">0</strong>
+                                <span>Completadas</span>
+                            </div>
+
+                        </article>
+
+                        <article class="quick-stat quick-stat--donut">
+                            <div id="donutProgreso" class="progress-donut progress-donut--small" style="--progress: 0deg;">
+                                <div class="progress-donut__center">
+                                    <strong id="porcentajeProgreso">0%</strong>
+                                    <span>progreso</span>
+                                </div>
+                            </div>
+                            <div class="progress-hidden-data">
+                                <strong id="totalTareas">0</strong>
+                                <strong id="totalPendientes">0</strong>
+                                <strong id="totalProgreso">0</strong>
+                                <strong id="totalCompletadas">0</strong>
+                                <span id="textoProgreso">0 de 0 completadas</span>
+                                <div id="barraProgreso" style="width: 0%;"></div>
+                            </div>
+                        </article>
+
+                    </div>
+
+
+                    <!-- FILTROS -->
+
+                    <div
+                        class="filters"
+                        aria-label="Filtrar tareas"
+                    >
+
+                        <button
+                            type="button"
+                            class="filter-btn filter-btn--active"
+                            data-filter="todas"
+                        >
+                            Todas
+                        </button>
+
+                        <button
+                            type="button"
+                            class="filter-btn"
+                            data-filter="pendiente"
+                        >
+                            <span class="filter-dot filter-dot--todo"></span>
+                            Por iniciar
+                        </button>
+
+                        <button
+                            type="button"
+                            class="filter-btn"
+                            data-filter="en-progreso"
+                        >
+                            <span class="filter-dot filter-dot--progress"></span>
+                            En curso
+                        </button>
+
+                        <button
+                            type="button"
+                            class="filter-btn"
+                            data-filter="completada"
+                        >
+                            <span class="filter-dot filter-dot--done"></span>
+                            Completadas
+                        </button>
+
+                    </div>
+
+
+                    <!-- LISTA -->
+
+                    <div
+                        id="listaTareas"
+                        class="task-grid"
+                        aria-live="polite"
+                    >
+
+                        <div class="empty-state">
+
+                            <img
+                                src="./assets/img/empty-notebook.svg"
+                                alt=""
+                                class="empty-state__image"
+                                aria-hidden="true"
+                            >
+
+                            <h3>
+                                Aún no tienes tareas
+                            </h3>
+
+                            <p>
+                                Crea una tarea y empieza a organizar tu día.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- OVERLAY -->
+
+    <div
+        id="overlay"
+        class="overlay hidden"
+    ></div>
+
+
+    <!-- MODAL TAREA -->
+
+    <aside
+        id="panelTarea"
+        class="task-panel hidden"
+        aria-labelledby="tituloFormulario"
+    >
+
+        <div class="task-panel__header">
+
+            <div>
+
+                <p class="eyebrow">
+                    MYFLOW
+                </p>
+
+                <h2 id="tituloFormulario">
+                    Nueva tarea
+                </h2>
+
+                <p>
+                    Define lo que quieres lograr.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                id="btnCerrarPanel"
+                class="icon-btn"
+                aria-label="Cerrar formulario"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form
+            id="formTarea"
+            class="task-form"
+            novalidate
+        >
+
+            <input
+                type="hidden"
+                id="tareaId"
+            >
+
+
+            <div class="form-group form-group--full">
+
+                <label for="descripcion">
+                    Descripción *
+                </label>
+
+                <input
+                    type="text"
+                    id="descripcion"
+                    maxlength="80"
+                    placeholder="Ej: Terminar proyecto JavaScript"
+                    autocomplete="off"
+                    required
+                >
+
+                <small>
+                    Máximo 80 caracteres.
+                </small>
+
+            </div>
+
+
+            <div class="form-group form-group--full">
+
+                <label for="prioridad">
+                    Prioridad *
+                </label>
+
+                <select
+                    id="prioridad"
+                    required
+                >
+                    <option value="baja">Baja</option>
+                    <option value="media" selected>Media</option>
+                    <option value="alta">Alta</option>
+                </select>
+
+            </div>
+
+
+            <div class="form-group form-group--full">
+
+                <label for="fechaLimite">
+                    Fecha límite *
+                </label>
+
+                <input
+                    type="datetime-local"
+                    id="fechaLimite"
+                    required
+                >
+
+            </div>
+
+
+            <p
+                id="mensajeError"
+                class="form-error"
+                aria-live="polite"
+            ></p>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    id="btnCancelar"
+                    class="btn btn--ghost"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="submit"
+                    id="btnGuardarTarea"
+                    class="btn btn--primary btn--large"
+                >
+                    Crear tarea
+                </button>
+
+            </div>
+
+        </form>
+
+    </aside>
+
+
+    <!-- INSPÍRAME -->
+
+    <aside
+        id="panelInspiracion"
+        class="inspiration-panel hidden"
+        aria-labelledby="categoriaInspiracion"
+    >
+
+        <div class="inspiration-card">
+
+            <div class="inspiration-card__top">
+
+                <div>
+
+                    <span
+                        class="inspiration-card__spark"
+                        aria-hidden="true"
+                    >
+                        ✨
+                    </span>
+
+                    <span
+                        id="categoriaInspiracion"
+                        class="inspiration-card__category"
+                    >
+                        PRIORIZA
+                    </span>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="btnCerrarInspiracion"
+                    class="icon-btn"
+                    aria-label="Cerrar inspiración"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <p
+                id="textoInspiracion"
+                class="inspiration-card__text"
+                aria-live="polite"
+            >
+                Empieza por la tarea de mayor impacto.
+            </p>
+
+
+            <div class="inspiration-card__actions">
+
+                <button
+                    type="button"
+                    id="btnCerrarConsejo"
+                    class="btn btn--ghost"
+                >
+                    Cerrar
+                </button>
+
+                <button
+                    type="button"
+                    id="btnMasInspiracion"
+                    class="btn btn--primary"
+                >
+                    Otra idea
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <div
+        id="notificacion"
+        class="notification hidden"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+    <footer class="footer">
+        <div class="container footer__content">
+            <div class="footer__brand">
+                <strong>MyFlow</strong>
+                <span>Organiza, prioriza y avanza a tu ritmo.</span>
+            </div>
+
+            <nav class="footer__links" aria-label="Contacto">
+                <button type="button" id="btnContacto" class="footer__link">Contacto</button>
+            </nav>
+
+            <p class="footer__copyright">© 2026 MyFlow. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL CONTACTO -->
+    <aside id="panelContacto" class="contact-panel hidden" aria-labelledby="tituloContacto">
+        <div class="task-panel__header">
+            <div>
+                <p class="eyebrow">MYFLOW</p>
+                <h2 id="tituloContacto">Contacto</h2>
+                <p>¿Tienes una consulta? Escríbenos.</p>
+            </div>
+            <button type="button" id="btnCerrarContacto" class="icon-btn" aria-label="Cerrar contacto">×</button>
+        </div>
+
+        <form id="formContacto" class="task-form">
+            <div class="form-group form-group--full">
+                <label for="contactoNombre">Nombre</label>
+                <input id="contactoNombre" type="text" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group form-group--full">
+                <label for="contactoEmail">Email</label>
+                <input id="contactoEmail" type="email" placeholder="nombre@correo.com" required>
+            </div>
+            <div class="form-group form-group--full">
+                <label for="contactoMensaje">Mensaje</label>
+                <textarea id="contactoMensaje" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="button" id="btnCancelarContacto" class="btn btn--ghost">Cancelar</button>
+                <button type="submit" class="btn btn--primary">Enviar mensaje</button>
+            </div>
+        </form>
+    </aside>
+
+
+    <script
+        type="module"
+        src="./js/app.js"
+    ></script>
+
+</body>
+
+</html>
