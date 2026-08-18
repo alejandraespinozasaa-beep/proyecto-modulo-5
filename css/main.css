@@ -724,10 +724,10 @@
     }
 
     .hero h1 {
-        font-size: 1.8rem;
-        line-height: 1.12;
-
+        font-size: 1.2rem;
+        line-height: 1.2;
         color: #273047;
+        white-space: nowrap;
     }
 
     .hero__description {
@@ -783,9 +783,8 @@
     }
 
     .tasks-title h2 {
-        font-size: 1.55rem;
+        font-size: 1.25rem;
         line-height: 1.1;
-
         color: #273047;
     }
 
@@ -878,33 +877,22 @@
     /* FILTROS */
 
     .filters {
-        display: flex;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 3px;
+    margin-bottom: 12px;
+    padding-bottom: 3px;
+    width: 100%;
+    overflow: hidden;
+}
 
-        flex-wrap: nowrap;
-
-        gap: 6px;
-
-        margin-bottom: 12px;
-
-        padding-bottom: 3px;
-
-        overflow-x: auto;
-
-        scrollbar-width: none;
-    }
-
-    .filters::-webkit-scrollbar {
-        display: none;
-    }
-
-    .filter-btn {
-        flex: 0 0 auto;
-
-        padding: 8px 11px;
-
-        font-size: .74rem;
-    }
-
+.filter-btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 8px 6px;
+    font-size: .65rem;
+    white-space: nowrap;
+}
 
     /* FOOTER */
 
@@ -944,14 +932,6 @@
 
 @media (max-width: 420px) {
 
-    .hero h1 {
-        font-size: 1.7rem;
-    }
-
-    .tasks-title h2 {
-        font-size: 1.45rem;
-    }
-
     .quick-stat {
         min-height: 70px;
 
@@ -974,5 +954,142 @@
 @media (max-width: 760px) {
     .quick-stats {
         display: none;
+    }
+}
+
+/* CONTACTO */
+
+#btnContacto {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+#btnContacto:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* ILUSTRACIÓN HERO */
+
+.hero__illustration {
+    position: absolute;
+
+    top: -5px;
+    right: 35px;
+
+    width: 230px;
+    max-width: 22vw;
+
+    opacity: 0.55;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero__illustration img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Mantiene el texto y botón por delante */
+.hero__content {
+    position: relative;
+    z-index: 1;
+}
+
+/* En celular no mostramos la ilustración */
+@media (max-width: 760px) {
+
+    .hero__illustration {
+        display: none;
+    }
+}
+
+/* ==========================================
+   AJUSTE FINAL MOBILE
+   ========================================== */
+
+@media (max-width: 760px) {
+
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* HEADER */
+
+    .header__content {
+        gap: 6px;
+    }
+
+    .brand__image {
+        width: 110px;
+    }
+
+    .header__actions {
+        gap: 6px;
+    }
+
+    .header__actions .btn {
+        min-height: 42px;
+        padding-inline: 10px;
+        font-size: 0.78rem;
+    }
+
+    .header__actions .btn--icon {
+        width: 42px;
+        min-width: 42px;
+    }
+
+    /* HERO */
+
+    .hero__content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero__row {
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .hero h1 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-action {
+        align-self: flex-start;
+    }
+
+    .hero__description {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* MIS TAREAS */
+
+    .tasks-title {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .tasks-title > div:last-child {
+        min-width: 0;
+    }
+
+    .tasks-title p {
+        white-space: normal;
+    }
+
+    /* BUSCADOR */
+
+    .search,
+    .search__input {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }
 }
